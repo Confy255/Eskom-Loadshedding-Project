@@ -6,6 +6,5 @@ def dictionary_of_metrics(items):
     standard_deviation = round(np.std(items, ddof = 1), 2)
     minimum = round(min(items), 2)
     maximum = round(max(items), 2)
-     
-    return {"mean": mean, "median": median, "var": variance,
+     return {"mean": mean, "median": median, "var": variance,
             "std": standard_deviation, "min": minimum, "max":maximum}
