@@ -9,11 +9,12 @@ Original file is located at
 
 ### START FUNCTION
 def number_of_tweets_per_day(df):
-  x = [i.split(' ', 1)[0] for i in dates]
+
+  mod_date = [i.split(' ', 1)[0] for i in dates]
   twitter_df = pd.read_csv(twitter_url)
-  twitter_df_by_tweets= twitter_df.groupby(x)['Tweets'].count()
-  s = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
-  return s
+  twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
+  new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
+  return new_dataframe
 number_of_tweets_per_day(twitter_df.copy())
 
 ### END FUNCTION
