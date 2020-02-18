@@ -87,6 +87,12 @@ def dictionary_of_metrics(items):
 #Function 2
 
 def five_num_summary(items):
+        
+    """THIS FUNCTION WORKS AS SUCH;
+            >Takes in a list of integers
+            >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
+            as keys and corrisponding values,rounded to two decimal places, as values to the keys.
+    """
     maximum = round(max(items),2)
     median = round(np.median(items),2)
     minimum = round(min(items),2)
@@ -164,7 +170,7 @@ def number_of_tweets_per_day(df):
   twitter_df = pd.read_csv(twitter_url)
   twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
   new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
-  
+
   return new_dataframe
 
 #Function 6
