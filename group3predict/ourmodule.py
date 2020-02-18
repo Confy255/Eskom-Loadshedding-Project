@@ -84,15 +84,6 @@ def dictionary_of_metrics(items):
         'max': maximum
         }
 
-<<<<<<< HEAD
-
-#Function 3
-### START FUNCTION
-def date_parser(dates):
-    return [i.split(' ', 1)[0] for i in dates]
-
-### END FUNCTION
-
 #Function 2
 
 def five_num_summary(items):
@@ -104,11 +95,13 @@ def five_num_summary(items):
     return {'max': maximum, 'median': median, 'min': minimum, "q1":Q1, "q3":Q3}
 
 #Function 3
+
 def date_parser(dates):
     return [i.split(' ', 1)[0] for i in dates]
 
 
 #Function 4
+
 def extract_municipality_hashtags(df):
     # your code here
     municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
@@ -162,4 +155,15 @@ def extract_municipality_hashtags(df):
                 final_list_with_mun.append(municipality_dict[value])
             else:
                 final_list_with_mun.append(str(np.nan))
+
+#Function 5
+
+def number_of_tweets_per_day(df):
+
+  mod_date = [i.split(' ', 1)[0] for i in dates]
+  twitter_df = pd.read_csv(twitter_url)
+  twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
+  new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
+  
+  return new_dataframe
 
