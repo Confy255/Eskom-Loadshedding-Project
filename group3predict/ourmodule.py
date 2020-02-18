@@ -218,26 +218,29 @@ def word_splitter(df):
     return final_df
 
 #Function 7
-"""
-This function removes stopwords from a list containing list of tweets
-which matches with stopwords from a dictionary than returns a modified dataframe
-"""
 
 def stop_words_remover(df):
+    """
+    This function removes stopwords from a list containing list of tweets
+    which matches with stopwords from a dictionary than returns a modified dataframe
+    """
     list_of_tweets = []
     final_list_of_tweets = []
     for row in df['Tweets']:
         list_of_tweets.append(row.lower())
-        
+
+    #splitting tweets into lists within a list  
     list_of_list_of_tweets = [i.split() for i in list_of_tweets if i not in final_list_of_tweets]
     stop_words_list = stop_words_dict['stopwords']
-
+    
+    #Iterating through a list of tweets and removing stop words.
     for i in list_of_list_of_tweets:
         for p in stop_words_list:
             if p in i:
                 i.remove(p)
             else:
                 continue
+    
 
     df_final_list_of_tweets = pd.DataFrame({'Without Stop Words': list_of_list_of_tweets})
     final_df = pd.concat([df,df_final_list_of_tweets], axis=1)
