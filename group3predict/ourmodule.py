@@ -170,7 +170,7 @@ def number_of_tweets_per_day(df):
 #Function 6
 
 def word_splitter(df):
-    
+
     list_of_tweets = []
     final_list_of_tweets = []
     for row in df['Tweets']:
