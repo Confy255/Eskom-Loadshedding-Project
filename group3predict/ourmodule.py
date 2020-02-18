@@ -87,6 +87,12 @@ def dictionary_of_metrics(items):
 #Function 2
 
 def five_num_summary(items):
+        
+    """THIS FUNCTION WORKS AS SUCH;
+            >Takes in a list of integers
+            >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
+            as keys and corrisponding values,rounded to two decimal places, as values to the keys.
+    """
     maximum = round(max(items),2)
     median = round(np.median(items),2)
     minimum = round(min(items),2)
@@ -104,6 +110,11 @@ def date_parser(dates):
 
 def extract_municipality_hashtags(df):
     # your code here
+
+    '''This function extracts the names of the municipalities
+    and hashtag comments from the tweets column dataframe and returns
+    new dataframe.'''
+    
     municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
@@ -164,13 +175,18 @@ def number_of_tweets_per_day(df):
   twitter_df = pd.read_csv(twitter_url)
   twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
   new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
-  
+
   return new_dataframe
 
 #Function 6
 
 def word_splitter(df):
-
+    """THIS FUNCTION WORKS AS SUCH;
+            >Takes in a pandas dataframe and extracts a column called 'Tweets'.
+            >The function then spilts the tweets into a list of separate words.
+            >Results are in lowercase and are then placed in a new column called 'Spilt Tweets'.
+            >Lastly the function modifies the input dataframe by adding the 'Split Tweets' column to the dataframe.
+    """
     list_of_tweets = []
     final_list_of_tweets = []
     for row in df['Tweets']:
