@@ -112,6 +112,8 @@ def date_parser(dates):
     """The function that formats a date, removing the 
     time(hh:mm:ss) and return the date as yyyy-mm-dd"""
 
+
+    #use the split method to separate the date and time within a list comprehension
     return [i.split(' ', 1)[0] for i in dates]
 
 
@@ -120,10 +122,11 @@ def date_parser(dates):
 def extract_municipality_hashtags(df):
     # your code here
 
-    '''This function extracts the names of the municipalities
+    """This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
-    new dataframe.'''
-    
+    new dataframe.
+    """
+
     municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
