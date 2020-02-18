@@ -83,3 +83,13 @@ def dictionary_of_metrics(items):
         'min': minimum,
         'max': maximum
         }
+
+#Function 2
+
+def five_num_summary(items):
+    maximum = round(max(items),2)
+    median = round(np.median(items),2)
+    minimum = round(min(items),2)
+    Q1 = round(np.percentile(items, 25), 2)
+    Q3 = round(np.percentile(items, 75), 2)
+    return {'max': maximum, 'median': median, 'min': minimum, "q1":Q1, "q3":Q3}
