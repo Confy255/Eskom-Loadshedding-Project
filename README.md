@@ -1,3 +1,4 @@
 # group3predict
-import pandas as pd
-import numpy and np
+Python funtions that calculate and analyse Eskom data. The 7 functions process text and numeric data.
+
+
