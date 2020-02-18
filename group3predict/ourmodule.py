@@ -66,7 +66,8 @@ stop_words_dict = {
 }
 
 #Function 1
-
+''' >> The function allows a list as an input,
+    >> Returns a dictionery with keys, 'mean', 'median', 'std', 'var', 'min', 'max'. '''
 def dictionary_of_metrics(items):
     mean = round(np.mean(items), 2)
     median = round(np.median(items), 2)
