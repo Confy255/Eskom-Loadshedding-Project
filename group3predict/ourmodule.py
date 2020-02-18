@@ -121,12 +121,11 @@ def date_parser(dates):
 
 def extract_municipality_hashtags(df):
     # your code here
-
-    """This function extracts the names of the municipalities
+    
+    '''This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
-    new dataframe.
-    """
-
+    new dataframe.'''
+    
     municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
@@ -134,50 +133,71 @@ def extract_municipality_hashtags(df):
             '@centlecutility' : 'Mangaung',
             '@NMBmunicipality' : 'Nelson Mandela Bay',
             '@CityTshwane' : 'Tshwane'}
-     
+    
+    
     list_with_hashtags = []
     final_list_with_hashtags = []
     
-    list_with_mun = []
-    final_list_with_mun = []
+    new_list2 = []
+    final_list2 = []
     
-    
+    final_list3 = []
     
     for tweet in df['Tweets']:
         if '#' in tweet:
             list_with_hashtags.append(tweet.lower())
 
         else:
-            list_with_hashtags.append(np.nan)      
-
+            list_with_hashtags.append(np.nan)   
+            
+    #This is a list of list with the tweets in each row
     list_of_list_with_hashtags = [i.split() if i is not np.nan else i for i in list_with_hashtags]
     
+    #Extrating the comments which start with '#' and appending to final_list_with_hashtags
+    #Append with nan if comments dont contain '#'  
     for value in list_of_list_with_hashtags:
         if value is not np.nan:
             final_list_with_hashtags.append([value2 for value2 in value if value2[0] == '#'])
         else:
             final_list_with_hashtags.append(value)
-
-
-    for tweets in df['Tweets']:
-        if '@' in tweets:
-            list_with_mun.append(tweets)
-        else:
-            list_with_mun.append(str(np.nan))
             
-    rows = [i.split() if i is not str(np.nan) else i for i in list_with_mun]
-    
-    list_of_keys = []
-    
-    for key in municipality_dict.keys():
-        list_of_keys.append(key)
 
-    for list_value in rows:
-        for value in list_value:
-            if value in list_of_keys:
-                final_list_with_mun.append(municipality_dict[value])
-            else:
-                final_list_with_mun.append(str(np.nan))
+    for b in df['Tweets']:
+        if '@' in b:
+            new_list2.append(b)
+        else:
+            new_list2.append('')
+    
+    #List of list with all the comments splited at the whitw space
+    list_of_list = [i.split() for i in new_list2]
+    
+    #Append the final_list2 with empty string for empty list
+    #Append the final list2 with a dictionary value if list not empty 
+    for list_value in list_of_list:
+        if len(list_value) == 0:
+            final_list2.append(list(''))
+        else:
+            final_list2.append([municipality_dict[value] for value in list_value if value in municipality_dict.keys()])
+    
+    #Appending with a nan if the list is empty
+    #Appending with an item list if not empty
+    for item in final_list2:
+        if len(item) == 0:
+            final_list3.append(np.nan)
+        else:
+            final_list3.append(item)
+            
+    #creating a new data frame        
+    new_dataframe = pd.DataFrame({'municipality': final_list3, 'hashtags': final_list_with_hashtags})
+
+    #merging the given data frame with the new data frame
+    final_dataframe = pd.concat([df,new_dataframe],axis=1)
+    
+    return final_dataframe
+    
+    
+extract_municipality_hashtags(twitter_df)
+
 
 #Function 5
 
