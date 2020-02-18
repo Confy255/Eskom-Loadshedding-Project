@@ -176,7 +176,12 @@ def number_of_tweets_per_day(df):
 #Function 6
 
 def word_splitter(df):
-
+    """THIS FUNCTION WORKS AS SUCH;
+            >Takes in a pandas dataframe and extracts a column called 'Tweets'.
+            >The function then spilts the tweets into a list of separate words.
+            >Results are in lowercase and are then placed in a new column called 'Spilt Tweets'.
+            >Lastly the function modifies the input dataframe by adding the 'Split Tweets' column to the dataframe.
+    """
     list_of_tweets = []
     final_list_of_tweets = []
     for row in df['Tweets']:
