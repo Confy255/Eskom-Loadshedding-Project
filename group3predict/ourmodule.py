@@ -215,6 +215,10 @@ def word_splitter(df):
     return final_df
 
 #Function 7
+"""
+This function removes stopwords from a list containing list of tweets
+which matches with stopwords from a dictionary than returns a modified dataframe
+"""
 
 def stop_words_remover(df):
     list_of_tweets = []
