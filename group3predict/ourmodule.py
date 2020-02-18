@@ -111,10 +111,11 @@ def date_parser(dates):
 def extract_municipality_hashtags(df):
     # your code here
 
-    '''This function extracts the names of the municipalities
+    """This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
-    new dataframe.'''
-    
+    new dataframe.
+    """
+
     municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
             '@eThekwiniM' : 'eThekwini' ,
