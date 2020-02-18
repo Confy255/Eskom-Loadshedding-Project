@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 ebp_url = 'https://raw.githubusercontent.com/Explore-AI/Public-Data/master/Data/electrification_by_province.csv'
 ebp_df = pd.read_csv(ebp_url)
@@ -8,6 +9,11 @@ for col, row in ebp_df.iloc[:,1:].iteritems():
 
 ebp_df.head()
 
+"""THIS FUNCTION WORKS AS SUCH;
+        >Takes in a list of integers
+        >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
+         as keys and corrisponding values,rounded to two decimal places, as values to the keys.
+"""
 
 ### START FUNCTION
 def five_num_summary(items):
