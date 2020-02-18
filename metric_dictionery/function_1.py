@@ -1,4 +1,4 @@
-import numpy as numpy
+import numpy as np
 def dictionary_of_metrics(items):
     mean = round(np.mean(items), 2)
     median = round(np.median(items), 2)
