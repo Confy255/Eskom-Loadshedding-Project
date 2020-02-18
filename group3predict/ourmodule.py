@@ -68,8 +68,13 @@ stop_words_dict = {
 #Function 1
 
 def dictionary_of_metrics(items):
+    ''' >> The function allows a list as an input,
+    >> Returns a dictionery with keys, 'mean', 'median', 'std', 'var', 'min', 'max'. '''
+ 
+    #round to 2 decimal places
     mean = round(np.mean(items), 2)
     median = round(np.median(items), 2)
+    #use the ddof parameter
     var = round(np.var(items, ddof=1), 2)
     std_dev = round(np.std(items, ddof=1), 2)
     minimum = round(min(items), 2)
@@ -103,6 +108,10 @@ def five_num_summary(items):
 #Function 3
 
 def date_parser(dates):
+
+    """The function that formats a date, removing the 
+    time(hh:mm:ss) and return the date as yyyy-mm-dd"""
+
     return [i.split(' ', 1)[0] for i in dates]
 
 
@@ -172,6 +181,9 @@ def extract_municipality_hashtags(df):
 
 def number_of_tweets_per_day(df):
 
+"""This function retuns a new dataframe that has
+    a counted number of tweets per given date"""
+    
   mod_date = [i.split(' ', 1)[0] for i in dates]
   twitter_df = pd.read_csv(twitter_url)
   twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
