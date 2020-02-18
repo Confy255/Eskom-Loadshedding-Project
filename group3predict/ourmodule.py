@@ -83,3 +83,11 @@ def dictionary_of_metrics(items):
         'min': minimum,
         'max': maximum
         }
+
+
+#Function 3
+### START FUNCTION
+def date_parser(dates):
+    return [i.split(' ', 1)[0] for i in dates]
+
+### END FUNCTION
