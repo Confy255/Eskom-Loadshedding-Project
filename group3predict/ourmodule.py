@@ -69,148 +69,173 @@ stop_words_dict = {
 
 def dictionary_of_metrics(items):
     ''' >> The function allows a list as an input,
-        >> Returns a dictionery with keys, 'mean', 'median', 'std', 'var', 'min', 'max'. 
+        >> Returns a dictionery with keys, 'mean', 'median',
+        'std', 'var', 'min', 'max'.
     '''
- 
+
     # calculates mean and median and then round to 2 decimal places
+
     mean = round(np.mean(items), 2)
     median = round(np.median(items), 2)
 
     # calculates variance,standard deviation, minimum and maximum
     # use the ddof for unbiased estimators then rounds to 2 decimal places
+
     var = round(np.var(items, ddof=1), 2)
     std_dev = round(np.std(items, ddof=1), 2)
     minimum = round(min(items), 2)
     maximum = round(max(items), 2)
 
     # returns a dictionary with the metrics
+
     return {
         'mean': mean,
         'median': median,
         'var': var,
         'std': std_dev,
         'min': minimum,
-        'max': maximum
+        'max': maximum,
         }
 
 #Function 2
 
 def five_num_summary(items):
-        
     """
     THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
-            >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
-            as keys and corrisponding values,rounded to two decimal places, as values to the keys.
+            >Returns a dictionary with the five number summarry,
+            (median, q1, q3, max, min) as keys and corrisponding values,
+            rounded to two decimal places, as values to the keys.
     """
 
     # Calculates maximum and rounds to two decimal places
-    maximum = round(max(items),2)
+
+    maximum = round(max(items), 2)
 
     # Calculates median - middle number ,and rounds to two decimal places
-    median = round(np.median(items),2)
+
+    median = round(np.median(items), 2)
 
     # Calculates minimum and rounds to two decimal places
-    minimum = round(min(items),2)
 
-    # Calculates first quatile(first 25% of the data) and rounds to two decimal places
+    minimum = round(min(items), 2)
+
+    # Calculates first quatile(first 25% of the data)
+    # Rounds to two decimal places
+
     Q1 = round(np.percentile(items, 25), 2)
 
-    # Calculates third quatile(first 75% of the data) and rounds to two decimal places
+    # Calculates third quatile(first 75% of the data)
+    # Rounds to two decimal places
+
     Q3 = round(np.percentile(items, 75), 2)
 
     # Returns a dictionary containing five number summary
-    return {'max': maximum, 'median': median, 'min': minimum, "q1":Q1, "q3":Q3}
+
+    return {
+        'max': maximum,
+        'median': median,
+        'min': minimum,
+        'q1': Q1,
+        'q3': Q3,
+        }
+
 
 #Function 3
 
 def date_parser(dates):
-
     """
-    The function that formats a date, removing the 
+    The function that formats a date, removing the
     time(hh:mm:ss) and return the date as yyyy-mm-dd
-    
     """
 
+    # use the split method to separate the date and time
+    # use list comprehension to return formated date
 
-    #use the split method to separate the date and time within a list comprehension
     return [i.split(' ', 1)[0] for i in dates]
-
 
 #Function 4
 
 def extract_municipality_hashtags(df):
-    # your code here
-    
     """
     This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
     new dataframe.
-
     """
+
+    # your code here
 
     list_with_hashtags = []
     final_list_with_hashtags = []
-    
+
     new_list2 = []
     final_list2 = []
-    
+
     final_list3 = []
-    
+
     for tweet in df['Tweets']:
         if '#' in tweet:
             list_with_hashtags.append(tweet.lower())
-
         else:
-            list_with_hashtags.append(np.nan)   
-            
-    #This is a list of list with the tweets in each row
-    list_of_list_with_hashtags = [i.split() if i is not np.nan else i for i in list_with_hashtags]
-    
-    #Extrating the comments which start with '#' and appending to final_list_with_hashtags
-    #Append with nan if comments dont contain '#'  
+
+            list_with_hashtags.append(np.nan)
+
+    # This is a list of list with the tweets in each row
+
+    list_of_list_with_hashtags = [(i.split() if i is not np.nan else i)
+                                  for i in list_with_hashtags]
+
+    # Extrating the comments which start with '#'
+    # Appending the extracts to final_list_with_hashtags
+    # Append with nan if comments dont contain '#'
+
     for value in list_of_list_with_hashtags:
         if value is not np.nan:
-            final_list_with_hashtags.append([value2 for value2 in value if value2[0] == '#'])
+            final_list_with_hashtags.append
+            ([value2 for value2 in value if value2[0] == '#'])
         else:
+
             final_list_with_hashtags.append(value)
-            
 
     for b in df['Tweets']:
         if '@' in b:
             new_list2.append(b)
         else:
             new_list2.append('')
-    
-    #List of list with all the comments splited at the whitw space
+
+    # List of list with all the comments splited at the whitw space
+
     list_of_list = [i.split() for i in new_list2]
-    
-    #Append the final_list2 with empty string for empty list
-    #Append the final list2 with a dictionary value if list not empty 
+
+    # Append the final_list2 with empty string for empty list
+    # Append the final list2 with a dictionary value if list not empty
+
     for list_value in list_of_list:
         if len(list_value) == 0:
             final_list2.append(list(''))
         else:
-            final_list2.append([mun_dict[value] for value in list_value if value in mun_dict.keys()])
-    
-    #Appending with a nan if the list is empty
-    #Appending with an item list if not empty
+            final_list2.append([mun_dict[value] for value in list_value
+                               if value in mun_dict.keys()])
+
+    # Appending with a nan if the list is empty
+    # Appending with an item list if not empty
+
     for item in final_list2:
         if len(item) == 0:
             final_list3.append(np.nan)
         else:
             final_list3.append(item)
-            
-    #creating a new data frame        
-    new_dataframe = pd.DataFrame({'municipality': final_list3, 'hashtags': final_list_with_hashtags})
 
-    #merging the given data frame with the new data frame
-    final_dataframe = pd.concat([df,new_dataframe],axis=1)
-    
+    # creating a new data frame
+
+    new_dataframe = pd.DataFrame({'municipality': final_list3,
+                                 'hashtags': final_list_with_hashtags})
+
+    # merging the given data frame with the new data frame
+
+    final_dataframe = pd.concat([df, new_dataframe], axis=1)
+
     return final_dataframe
-    
-    
-extract_municipality_hashtags(twitter_df)
 
 
 #Function 5
@@ -241,56 +266,67 @@ def word_splitter(df):
     """THIS FUNCTION WORKS AS SUCH;
             >Takes in a pandas dataframe and extracts a column called 'Tweets'.
             >The function then spilts the tweets into a list of separate words.
-            >Results are in lowercase and are then placed in a new column called 'Spilt Tweets'.
-            >Lastly the function modifies the input dataframe by adding the 'Split Tweets' column to the dataframe.
+            >Results are in lowercase and are then placed in a new column
+            called 'Spilt Tweets'.
+            >Lastly the function modifies the input dataframe by adding the
+            'Split Tweets' column to the dataframe.
     """
+
     list_of_tweets = []
     final_list_of_tweets = []
 
-    #Selecting all the row comments in a data frame
+    # Selecting all the row comments in a data frame
+
     for row in df['Tweets']:
         list_of_tweets.append(row.lower())
 
-    #Spliting each row into list of lists    
+    # Spliting each row into list of lists
+
     list_of_list_of_tweets = [i.split() for i in list_of_tweets]
-    
-    #Appending final_list_of_tweets with each row of tweets
+
+    # Appending final_list_of_tweets with each row of tweets
+
     for item in list_of_list_of_tweets:
         final_list_of_tweets.append(item)
 
-    #New data frame of each row    
-    df_final_list_of_tweets = pd.DataFrame({'Split Tweets': final_list_of_tweets})
-    
-    final_df = pd.concat([df,df_final_list_of_tweets], axis=1)
+    # New data frame of each row
+
+    df_final_list_of_tweets = \
+        pd.DataFrame({'Split Tweets': final_list_of_tweets})
+
+    final_df = pd.concat([df, df_final_list_of_tweets], axis=1)
 
     return final_df
-
 #Function 7
 
 def stop_words_remover(df):
     """
-    This function removes stopwords from a list containing list of tweets
-    which matches with stopwords from a dictionary than returns a modified dataframe
+    This function removes stopwords from a list containing list of tweets which
+    matches with stopwords from a dictionary than returns a modified dataframe
     """
+
     list_of_tweets = []
     final_list_of_tweets = []
     for row in df['Tweets']:
         list_of_tweets.append(row.lower())
 
-    #splitting tweets into lists within a list  
-    list_of_list_of_tweets = [i.split() for i in list_of_tweets if i not in final_list_of_tweets]
+    # splitting tweets into lists within a list
+
+    list_of_list_of_tweets = [i.split() for i in list_of_tweets if i
+                              not in final_list_of_tweets]
     stop_words_list = stop_words_dict['stopwords']
-    
-    #Iterating through a list of tweets and removing stop words.
+
+    # Iterating through a list of tweets and removing stop words.
+
     for i in list_of_list_of_tweets:
         for p in stop_words_list:
             if p in i:
                 i.remove(p)
             else:
                 continue
-    
 
-    df_final_list_of_tweets = pd.DataFrame({'Without Stop Words': list_of_list_of_tweets})
-    final_df = pd.concat([df,df_final_list_of_tweets], axis=1)
+    df_final_list_of_tweets = \
+        pd.DataFrame({'Without Stop Words': list_of_list_of_tweets})
+    final_df = pd.concat([df, df_final_list_of_tweets], axis=1)
 
     return final_df
