@@ -68,6 +68,7 @@ stop_words_dict = {
 #Function 1
 
 def dictionary_of_metrics(items):
+    # your code here
     ''' >> The function allows a list as an input,
         >> Returns a dictionery with keys, 'mean', 'median',
         'std', 'var', 'min', 'max'.
@@ -96,6 +97,7 @@ def dictionary_of_metrics(items):
         'min': minimum,
         'max': maximum,
         }
+
 
 #Function 2
 
