@@ -192,7 +192,7 @@ def extract_municipality_hashtags(df):
     for value in list_of_list_with_hashtags:
         if value is not np.nan:
             final_list_with_hashtags.append
-            ([value2 forvalue2 in value if value2[0] == '#'])
+            ([value2 for value2 in value if value2[0] == '#'])
         else:
 
             final_list_with_hashtags.append(value)
