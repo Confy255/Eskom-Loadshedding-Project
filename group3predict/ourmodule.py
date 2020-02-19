@@ -69,28 +69,32 @@ stop_words_dict = {
 
 def dictionary_of_metrics(items):
     ''' >> The function allows a list as an input,
-        >> Returns a dictionery with keys, 'mean', 'median', 'std', 'var', 'min', 'max'. 
+        >> Returns a dictionery with keys, 'mean', 'median',
+        'std', 'var', 'min', 'max'.
     '''
- 
+
     # calculates mean and median and then round to 2 decimal places
+
     mean = round(np.mean(items), 2)
     median = round(np.median(items), 2)
 
     # calculates variance,standard deviation, minimum and maximum
     # use the ddof for unbiased estimators then rounds to 2 decimal places
+
     var = round(np.var(items, ddof=1), 2)
     std_dev = round(np.std(items, ddof=1), 2)
     minimum = round(min(items), 2)
     maximum = round(max(items), 2)
 
     # returns a dictionary with the metrics
+
     return {
         'mean': mean,
         'median': median,
         'var': var,
         'std': std_dev,
         'min': minimum,
-        'max': maximum
+        'max': maximum,
         }
 
 #Function 2
