@@ -163,16 +163,7 @@ def extract_municipality_hashtags(df):
     new dataframe.
 
     """
-    
-    municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
-            '@CityPowerJhb' : 'Johannesburg',
-            '@eThekwiniM' : 'eThekwini' ,
-            '@EMMInfo' : 'Ekurhuleni',
-            '@centlecutility' : 'Mangaung',
-            '@NMBmunicipality' : 'Nelson Mandela Bay',
-            '@CityTshwane' : 'Tshwane'}
-    
-    
+
     list_with_hashtags = []
     final_list_with_hashtags = []
     
@@ -215,7 +206,7 @@ def extract_municipality_hashtags(df):
         if len(list_value) == 0:
             final_list2.append(list(''))
         else:
-            final_list2.append([municipality_dict[value] for value in list_value if value in municipality_dict.keys()])
+            final_list2.append([mun_dict[value] for value in list_value if value in mun_dict.keys()])
     
     #Appending with a nan if the list is empty
     #Appending with an item list if not empty
