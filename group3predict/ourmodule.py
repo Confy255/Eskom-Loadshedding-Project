@@ -68,6 +68,7 @@ stop_words_dict = {
 #Function 1
 
 def dictionary_of_metrics(items):
+
     ''' >> The function allows a list as an input,
         >> Returns a dictionery with keys, 'mean', 'median',
         'std', 'var', 'min', 'max'.
@@ -97,9 +98,11 @@ def dictionary_of_metrics(items):
         'max': maximum,
         }
 
+
 #Function 2
 
 def five_num_summary(items):
+
     """
     THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
@@ -144,6 +147,7 @@ def five_num_summary(items):
 #Function 3
 
 def date_parser(dates):
+
     """
     The function that formats a date, removing the
     time(hh:mm:ss) and return the date as yyyy-mm-dd
@@ -157,13 +161,12 @@ def date_parser(dates):
 #Function 4
 
 def extract_municipality_hashtags(df):
+
     """
     This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
     new dataframe.
     """
-
-    # your code here
 
     list_with_hashtags = []
     final_list_with_hashtags = []
@@ -191,10 +194,9 @@ def extract_municipality_hashtags(df):
 
     for value in list_of_list_with_hashtags:
         if value is not np.nan:
-            final_list_with_hashtags.append
-            ([value2 for value2 in value if value2[0] == '#'])
+            final_list_with_hashtags\
+                .append([value2 for value2 in value if value2[0] == '#'])
         else:
-
             final_list_with_hashtags.append(value)
 
     for b in df['Tweets']:
@@ -203,12 +205,11 @@ def extract_municipality_hashtags(df):
         else:
             new_list2.append('')
 
-    # List of list with all the comments splited at the whitw space
+    # List of list with all the comments splited at the white space
 
     list_of_list = [i.split() for i in new_list2]
 
     # Append the final_list2 with empty string for empty list
-    
     # Append the final list2 with a dictionary value if list not empty
 
     for list_value in list_of_list:
@@ -246,19 +247,25 @@ def number_of_tweets_per_day(df):
     """This function retuns a new dataframe that has
         a counted number of tweets per given date
     """
-    #modify the date to a yyyy-mm-dd format
+
+    # modify the date to a yyyy-mm-dd format
+
     mod_date = [i.split(' ', 1)[0] for i in dates]
     twitter_df = pd.read_csv(twitter_url)
 
-    #create new dataframe that counts number of tweets a day,grouped by modified_date
-    twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
-    new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
+    # create new dataframe that counts number of tweets a day
+    # The new dataframe is grouped by modified date
+
+    twitter_df_by_tweets = twitter_df.groupby(mod_date)['Tweets'].count()
+    new_dataframe = \
+        pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
 
     return new_dataframe
 
 #Function 6
 
 def word_splitter(df):
+
     """THIS FUNCTION WORKS AS SUCH;
             >Takes in a pandas dataframe and extracts a column called 'Tweets'.
             >The function then spilts the tweets into a list of separate words.
@@ -293,9 +300,11 @@ def word_splitter(df):
     final_df = pd.concat([df, df_final_list_of_tweets], axis=1)
 
     return final_df
+
 #Function 7
 
 def stop_words_remover(df):
+    
     """
     This function removes stopwords from a list containing list of tweets which
     matches with stopwords from a dictionary than returns a modified dataframe
