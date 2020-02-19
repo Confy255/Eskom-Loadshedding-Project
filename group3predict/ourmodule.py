@@ -68,7 +68,7 @@ stop_words_dict = {
 #Function 1
 
 def dictionary_of_metrics(items):
-    # your code here
+
     ''' >> The function allows a list as an input,
         >> Returns a dictionery with keys, 'mean', 'median',
         'std', 'var', 'min', 'max'.
@@ -102,7 +102,7 @@ def dictionary_of_metrics(items):
 #Function 2
 
 def five_num_summary(items):
-    # your code here
+
     """
     THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
@@ -147,7 +147,7 @@ def five_num_summary(items):
 #Function 3
 
 def date_parser(dates):
-    # your code here
+
     """
     The function that formats a date, removing the
     time(hh:mm:ss) and return the date as yyyy-mm-dd
@@ -161,13 +161,12 @@ def date_parser(dates):
 #Function 4
 
 def extract_municipality_hashtags(df):
+    
     """
     This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
     new dataframe.
     """
-
-    # your code here
 
     list_with_hashtags = []
     final_list_with_hashtags = []
@@ -246,7 +245,7 @@ def extract_municipality_hashtags(df):
 #Function 5
 
 def number_of_tweets_per_day(df):
-    
+
     """This function retuns a new dataframe that has
         a counted number of tweets per given date
     """
