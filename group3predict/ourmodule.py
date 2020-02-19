@@ -260,30 +260,37 @@ def word_splitter(df):
     """THIS FUNCTION WORKS AS SUCH;
             >Takes in a pandas dataframe and extracts a column called 'Tweets'.
             >The function then spilts the tweets into a list of separate words.
-            >Results are in lowercase and are then placed in a new column called 'Spilt Tweets'.
-            >Lastly the function modifies the input dataframe by adding the 'Split Tweets' column to the dataframe.
+            >Results are in lowercase and are then placed in a new column
+            called 'Spilt Tweets'.
+            >Lastly the function modifies the input dataframe by adding the
+            'Split Tweets' column to the dataframe.
     """
+
     list_of_tweets = []
     final_list_of_tweets = []
 
-    #Selecting all the row comments in a data frame
+    # Selecting all the row comments in a data frame
+
     for row in df['Tweets']:
         list_of_tweets.append(row.lower())
 
-    #Spliting each row into list of lists    
+    # Spliting each row into list of lists
+
     list_of_list_of_tweets = [i.split() for i in list_of_tweets]
-    
-    #Appending final_list_of_tweets with each row of tweets
+
+    # Appending final_list_of_tweets with each row of tweets
+
     for item in list_of_list_of_tweets:
         final_list_of_tweets.append(item)
 
-    #New data frame of each row    
-    df_final_list_of_tweets = pd.DataFrame({'Split Tweets': final_list_of_tweets})
-    
-    final_df = pd.concat([df,df_final_list_of_tweets], axis=1)
+    # New data frame of each row
+
+    df_final_list_of_tweets = \
+        pd.DataFrame({'Split Tweets': final_list_of_tweets})
+
+    final_df = pd.concat([df, df_final_list_of_tweets], axis=1)
 
     return final_df
-
 #Function 7
 
 def stop_words_remover(df):
