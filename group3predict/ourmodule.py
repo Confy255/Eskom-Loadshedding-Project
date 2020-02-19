@@ -216,19 +216,24 @@ extract_municipality_hashtags(twitter_df)
 #Function 5
 
 def number_of_tweets_per_day(df):
-
     """This function retuns a new dataframe that has
         a counted number of tweets per given date
     """
-    #modify the date to a yyyy-mm-dd format
+
+    # modify the date to a yyyy-mm-dd format
+
     mod_date = [i.split(' ', 1)[0] for i in dates]
     twitter_df = pd.read_csv(twitter_url)
 
-    #create new dataframe that counts number of tweets a day,grouped by modified_date
-    twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
-    new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
+    # create new dataframe that counts number of tweets a day
+    # The new dataframe is grouped by modified_date
+
+    twitter_df_by_tweets = twitter_df.groupby(mod_date)['Tweets'].count()
+    new_dataframe = \
+        pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
 
     return new_dataframe
+
 
 #Function 6
 
