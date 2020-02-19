@@ -226,7 +226,7 @@ def number_of_tweets_per_day(df):
     twitter_df = pd.read_csv(twitter_url)
 
     # create new dataframe that counts number of tweets a day
-    # The new dataframe is grouped by modified_date
+    # The new dataframe is grouped by modified date
 
     twitter_df_by_tweets = twitter_df.groupby(mod_date)['Tweets'].count()
     new_dataframe = \
