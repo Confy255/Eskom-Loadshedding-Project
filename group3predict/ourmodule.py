@@ -208,6 +208,7 @@ def extract_municipality_hashtags(df):
     list_of_list = [i.split() for i in new_list2]
 
     # Append the final_list2 with empty string for empty list
+    
     # Append the final list2 with a dictionary value if list not empty
 
     for list_value in list_of_list:
