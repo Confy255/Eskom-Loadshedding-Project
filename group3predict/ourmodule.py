@@ -194,10 +194,9 @@ def extract_municipality_hashtags(df):
 
     for value in list_of_list_with_hashtags:
         if value is not np.nan:
-            final_list_with_hashtags.append
-            ([value2 for value2 in value if value2[0] == '#'])
+            final_list_with_hashtags\
+                .append([value2 for value2 in value if value2[0] == '#'])
         else:
-
             final_list_with_hashtags.append(value)
 
     for b in df['Tweets']:
@@ -206,12 +205,11 @@ def extract_municipality_hashtags(df):
         else:
             new_list2.append('')
 
-    # List of list with all the comments splited at the whitw space
+    # List of list with all the comments splited at the white space
 
     list_of_list = [i.split() for i in new_list2]
 
     # Append the final_list2 with empty string for empty list
-    
     # Append the final list2 with a dictionary value if list not empty
 
     for list_value in list_of_list:
