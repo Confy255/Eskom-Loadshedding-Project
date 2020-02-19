@@ -72,15 +72,18 @@ def dictionary_of_metrics(items):
         >> Returns a dictionery with keys, 'mean', 'median', 'std', 'var', 'min', 'max'. 
     '''
  
-    #round to 2 decimal places
+    # calculates mean and median and then round to 2 decimal places
     mean = round(np.mean(items), 2)
     median = round(np.median(items), 2)
-    #use the ddof parameter
+
+    # calculates variance,standard deviation, minimum and maximum
+    # use the ddof for unbiased estimators then rounds to 2 decimal places
     var = round(np.var(items, ddof=1), 2)
     std_dev = round(np.std(items, ddof=1), 2)
     minimum = round(min(items), 2)
     maximum = round(max(items), 2)
 
+    # returns a dictionary with the metrics
     return {
         'mean': mean,
         'median': median,
@@ -94,7 +97,8 @@ def dictionary_of_metrics(items):
 
 def five_num_summary(items):
         
-    """THIS FUNCTION WORKS AS SUCH;
+    """
+    THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
             >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
             as keys and corrisponding values,rounded to two decimal places, as values to the keys.
@@ -122,8 +126,11 @@ def five_num_summary(items):
 
 def date_parser(dates):
 
-    """The function that formats a date, removing the 
-    time(hh:mm:ss) and return the date as yyyy-mm-dd"""
+    """
+    The function that formats a date, removing the 
+    time(hh:mm:ss) and return the date as yyyy-mm-dd
+    
+    """
 
 
     #use the split method to separate the date and time within a list comprehension
@@ -135,9 +142,12 @@ def date_parser(dates):
 def extract_municipality_hashtags(df):
     # your code here
     
-    '''This function extracts the names of the municipalities
+    """
+    This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
-    new dataframe.'''
+    new dataframe.
+
+    """
     
     municipality_dict = { '@CityofCTAlerts' : 'Cape Town',
             '@CityPowerJhb' : 'Johannesburg',
