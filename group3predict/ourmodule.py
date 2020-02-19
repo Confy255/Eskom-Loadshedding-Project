@@ -98,9 +98,11 @@ def five_num_summary(items):
             >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
             as keys and corrisponding values,rounded to two decimal places, as values to the keys.
     """
+    #use munpy to calculate min,max, median, rounded to 2 decimals
     maximum = round(max(items),2)
     median = round(np.median(items),2)
     minimum = round(min(items),2)
+    #use percentiles to find quartiles 1 and 3,rounded to 2 decimals
     Q1 = round(np.percentile(items, 25), 2)
     Q3 = round(np.percentile(items, 75), 2)
     return {'max': maximum, 'median': median, 'min': minimum, "q1":Q1, "q3":Q3}
