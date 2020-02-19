@@ -237,6 +237,7 @@ def extract_municipality_hashtags(df):
 
     return final_dataframe
 
+
 #Function 5
 
 def number_of_tweets_per_day(df):
