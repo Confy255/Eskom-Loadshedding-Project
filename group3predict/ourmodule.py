@@ -161,7 +161,7 @@ def date_parser(dates):
 #Function 4
 
 def extract_municipality_hashtags(df):
-    
+
     """
     This function extracts the names of the municipalities
     and hashtag comments from the tweets column dataframe and returns
@@ -265,6 +265,7 @@ def number_of_tweets_per_day(df):
 #Function 6
 
 def word_splitter(df):
+
     """THIS FUNCTION WORKS AS SUCH;
             >Takes in a pandas dataframe and extracts a column called 'Tweets'.
             >The function then spilts the tweets into a list of separate words.
@@ -299,6 +300,7 @@ def word_splitter(df):
     final_df = pd.concat([df, df_final_list_of_tweets], axis=1)
 
     return final_df
+    
 #Function 7
 
 def stop_words_remover(df):
