@@ -93,30 +93,44 @@ def dictionary_of_metrics(items):
 #Function 2
 
 def five_num_summary(items):
-        
     """THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
-            >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
-            as keys and corrisponding values,rounded to two decimal places, as values to the keys.
+            >Returns a dictionary with the five number summarry
+            (median, q1, q3, max, min)as keys and corrisponding values,
+            rounded to two decimal places, as values to the keys.
     """
 
     # Calculates maximum and rounds to two decimal places
-    maximum = round(max(items),2)
+
+    maximum = round(max(items), 2)
 
     # Calculates median - middle number ,and rounds to two decimal places
-    median = round(np.median(items),2)
+
+    median = round(np.median(items), 2)
 
     # Calculates minimum and rounds to two decimal places
-    minimum = round(min(items),2)
 
-    # Calculates first quatile(first 25% of the data) and rounds to two decimal places
+    minimum = round(min(items), 2)
+
+    # Calculates first quatile(first 25% of the data),
+    # and rounds to two decimal places
+
     Q1 = round(np.percentile(items, 25), 2)
 
-    # Calculates third quatile(first 75% of the data) and rounds to two decimal places
+    # Calculates third quatile(first 75% of the data),
+    # and rounds to two decimal places
+
     Q3 = round(np.percentile(items, 75), 2)
 
     # Returns a dictionary containing five number summary
-    return {'max': maximum, 'median': median, 'min': minimum, "q1":Q1, "q3":Q3}
+
+    return {
+        'max': maximum,
+        'median': median,
+        'min': minimum,
+        'q1': Q1,
+        'q3': Q3,
+        }
 
 #Function 3
 
