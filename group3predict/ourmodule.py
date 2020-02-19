@@ -144,17 +144,15 @@ def five_num_summary(items):
 #Function 3
 
 def date_parser(dates):
-
     """
-    The function that formats a date, removing the 
+    The function that formats a date, removing the
     time(hh:mm:ss) and return the date as yyyy-mm-dd
-    
     """
 
+    # use the split method to separate the date and time within a list
+    # comprehension
 
-    #use the split method to separate the date and time within a list comprehension
     return [i.split(' ', 1)[0] for i in dates]
-
 
 #Function 4
 
