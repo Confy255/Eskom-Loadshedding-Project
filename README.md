@@ -1,5 +1,5 @@
 # Group3 analyse predict
-## The project has 7 functions which analyse Eskom data which is passed to each function.
+## The project has 7 functions which analyse Eskom data passed to each function.
 
 * Function one takes in a list of integers and calculates the metrics of a given data given as a list and outputs the metrics (mean, median,maximum,minimum,standard deviation, variance) as a dictionary.
 
