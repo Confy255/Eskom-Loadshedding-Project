@@ -102,6 +102,7 @@ def dictionary_of_metrics(items):
 #Function 2
 
 def five_num_summary(items):
+    # your code here
     """
     THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
@@ -141,7 +142,6 @@ def five_num_summary(items):
         'q1': Q1,
         'q3': Q3,
         }
-
 
 #Function 3
 
