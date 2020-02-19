@@ -30,10 +30,10 @@ To call any function inside the module you need to type the following command
 ourmodule.functionname(parameter)
 
 # Authors
-Sandile Mkize
-Sandile Dladla
-Confidence Ledwaba
-Karabo Leso
+Sandile Mkize,
+Sandile Dladla,
+Confidence Ledwaba,
+Karabo Leso,
 Evans Marema
 
 # License
