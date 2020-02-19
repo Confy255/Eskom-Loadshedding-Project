@@ -30,9 +30,9 @@ Download the latest version for Anaconda
 # Deployment
 You need to install the module for the function.
 On your computer search for Anaconda prompts.
-Do a pip install with the following comand: 'pip install git+https://github.com/Confy255/group3predict.git' 
+Do a pip install with the following comand: **'pip install git+https://github.com/Confy255/group3predict.git'** 
 To import the module to your Jupyter notebook type the following comand inside your cell
-from group3predict import ourmodule
+**from group3predict import ourmodule**
 To call any function inside the module you need to type the following command
 ourmodule.functionname(parameter)
 
