@@ -100,11 +100,18 @@ def dictionary_of_metrics(items):
 #Function 2
 
 def five_num_summary(items):
+<<<<<<< HEAD
+    """THIS FUNCTION WORKS AS SUCH;
+            >Takes in a list of integers
+            >Returns a dictionary with the five number summarry
+            (median, q1, q3, max, min)as keys and corrisponding values,
+=======
     """
     THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
             >Returns a dictionary with the five number summarry,
             (median, q1, q3, max, min) as keys and corrisponding values,
+>>>>>>> 9246a895e6b5b04c5aa1fe4b5720a8fc685ac7d5
             rounded to two decimal places, as values to the keys.
     """
 
@@ -120,6 +127,15 @@ def five_num_summary(items):
 
     minimum = round(min(items), 2)
 
+<<<<<<< HEAD
+    # Calculates first quatile(first 25% of the data),
+    # and rounds to two decimal places
+
+    Q1 = round(np.percentile(items, 25), 2)
+
+    # Calculates third quatile(first 75% of the data),
+    # and rounds to two decimal places
+=======
     # Calculates first quatile(first 25% of the data)
     # Rounds to two decimal places
 
@@ -127,6 +143,7 @@ def five_num_summary(items):
 
     # Calculates third quatile(first 75% of the data)
     # Rounds to two decimal places
+>>>>>>> 9246a895e6b5b04c5aa1fe4b5720a8fc685ac7d5
 
     Q3 = round(np.percentile(items, 75), 2)
 
@@ -139,7 +156,10 @@ def five_num_summary(items):
         'q1': Q1,
         'q3': Q3,
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9246a895e6b5b04c5aa1fe4b5720a8fc685ac7d5
 
 #Function 3
 
@@ -242,19 +262,24 @@ def extract_municipality_hashtags(df):
 #Function 5
 
 def number_of_tweets_per_day(df):
-
     """This function retuns a new dataframe that has
         a counted number of tweets per given date
     """
-    #modify the date to a yyyy-mm-dd format
+
+    # modify the date to a yyyy-mm-dd format
+
     mod_date = [i.split(' ', 1)[0] for i in dates]
     twitter_df = pd.read_csv(twitter_url)
 
-    #create new dataframe that counts number of tweets a day,grouped by modified_date
-    twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
-    new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
+    # create new dataframe that counts number of tweets a day
+    # The new dataframe is grouped by modified date
+
+    twitter_df_by_tweets = twitter_df.groupby(mod_date)['Tweets'].count()
+    new_dataframe = \
+        pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
 
     return new_dataframe
+
 
 #Function 6
 
