@@ -69,7 +69,8 @@ stop_words_dict = {
 
 def dictionary_of_metrics(items):
     ''' >> The function allows a list as an input,
-    >> Returns a dictionery with keys, 'mean', 'median', 'std', 'var', 'min', 'max'. '''
+        >> Returns a dictionery with keys, 'mean', 'median', 'std', 'var', 'min', 'max'. 
+    '''
  
     #round to 2 decimal places
     mean = round(np.mean(items), 2)
@@ -98,13 +99,23 @@ def five_num_summary(items):
             >Returns a dictionary with the five number summarry (median, q1, q3, max, min) 
             as keys and corrisponding values,rounded to two decimal places, as values to the keys.
     """
-    #use munpy to calculate min,max, median, rounded to 2 decimals
+
+    # Calculates maximum and rounds to two decimal places
     maximum = round(max(items),2)
+
+    # Calculates median - middle number ,and rounds to two decimal places
     median = round(np.median(items),2)
+
+    # Calculates minimum and rounds to two decimal places
     minimum = round(min(items),2)
-    #use percentiles to find quartiles 1 and 3,rounded to 2 decimals
+
+    # Calculates first quatile(first 25% of the data) and rounds to two decimal places
     Q1 = round(np.percentile(items, 25), 2)
+
+    # Calculates third quatile(first 75% of the data) and rounds to two decimal places
     Q3 = round(np.percentile(items, 75), 2)
+
+    # Returns a dictionary containing five number summary
     return {'max': maximum, 'median': median, 'min': minimum, "q1":Q1, "q3":Q3}
 
 #Function 3
@@ -208,12 +219,9 @@ def number_of_tweets_per_day(df):
     """This function retuns a new dataframe that has
         a counted number of tweets per given date
     """
-    #modify date to yyyy-mm-dd format
+    
     mod_date = [i.split(' ', 1)[0] for i in dates]
-
     twitter_df = pd.read_csv(twitter_url)
-
-    #create new dataframe that counts number of tweets, grouped by mod_date
     twitter_df_by_tweets= twitter_df.groupby(mod_date)['Tweets'].count()
     new_dataframe = pd.DataFrame(twitter_df_by_tweets).rename_axis('Date')
 
