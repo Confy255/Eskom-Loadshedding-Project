@@ -149,8 +149,8 @@ def date_parser(dates):
     time(hh:mm:ss) and return the date as yyyy-mm-dd
     """
 
-    # use the split method to separate the date and time within a list
-    # comprehension
+    # use the split method to separate the date and time
+    # use list comprehension to return formated date
 
     return [i.split(' ', 1)[0] for i in dates]
 
