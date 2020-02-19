@@ -68,6 +68,7 @@ stop_words_dict = {
 #Function 1
 
 def dictionary_of_metrics(items):
+    # your code here
     ''' >> The function allows a list as an input,
         >> Returns a dictionery with keys, 'mean', 'median',
         'std', 'var', 'min', 'max'.
@@ -97,9 +98,11 @@ def dictionary_of_metrics(items):
         'max': maximum,
         }
 
+
 #Function 2
 
 def five_num_summary(items):
+    # your code here
     """
     THIS FUNCTION WORKS AS SUCH;
             >Takes in a list of integers
@@ -144,6 +147,7 @@ def five_num_summary(items):
 #Function 3
 
 def date_parser(dates):
+    # your code here
     """
     The function that formats a date, removing the
     time(hh:mm:ss) and return the date as yyyy-mm-dd
