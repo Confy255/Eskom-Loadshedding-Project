@@ -1,12 +1,13 @@
 # Group3 analyse predict
 The project has 7 functions which analyse Eskom data which is passed to each function.
-Function one calculates metrics of a given data given as a list and outputs the metrics (mean, median,maximum,minimum,standard deviation, variance) as a dictionary.
-Function two returns a five number summary (median,maximum,minimum,q1,q3)
-Function three takes in a date as string in one format and convert it to anonther string format
-Function four takes in a data frame and returns a new data frame with an added column of extracted hashtags and another column of municipality mentioned in each tweets.
-Function five accepts a given data frame and returns a new data frame that has a number of tweets per day.
-Function six takes in a data frame and output a new data frame with an added column that split a sentence to a list of indivisual words.
-Function seven takes in a data frame and output a new data frame with an added column of the tweets without stop words.
+
+*Function takes in a list integers one calculates metrics of a given data given as a list and outputs the metrics (mean, median,maximum,minimum,standard deviation, variance) as a dictionary.
+*Function two takes in a list of integers then returns a five number summary (median,maximum,minimum,q1,q3)
+*Function three takes in a date as string in one format and convert it to anonther string format
+*Function four takes in a dataframe and returns a new dataframe with an added column of extracted hashtags and another column of municipality mentioned in each tweets.
+*Function five accepts a given dataframe and returns a new dataframe that has a number of tweets per day.
+*Function six takes in a dataframe and output a new dataframe with an added column that split a sentence to a list of indivisual words.
+*Function seven takes in a data frame and output a new data frame with an added column of the tweets without stop words.
 
 
 # Getting Started
