@@ -250,15 +250,21 @@ def word_splitter(df):
     """
     list_of_tweets = []
     final_list_of_tweets = []
+
+    #Selecting all the row comments in a data frame
     for row in df['Tweets']:
         list_of_tweets.append(row.lower())
-        
+
+    #Spliting each row into list of lists    
     list_of_list_of_tweets = [i.split() for i in list_of_tweets]
     
+    #Appending final_list_of_tweets with each row of tweets
     for item in list_of_list_of_tweets:
         final_list_of_tweets.append(item)
-        
+
+    #New data frame of each row    
     df_final_list_of_tweets = pd.DataFrame({'Split Tweets': final_list_of_tweets})
+    
     final_df = pd.concat([df,df_final_list_of_tweets], axis=1)
 
     return final_df
